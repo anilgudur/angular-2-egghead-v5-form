@@ -3,6 +3,10 @@ import { Component, ViewChild } from '@angular/core';
 @Component({
     moduleId: module.id,
     selector: 'form-selector',
+    styles: [`
+        input.ng-invalid{border:1px solid red}
+        input.ng-valid{border:1px solid green}
+    `],
     template: `
     <form #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)">
 

@@ -20,6 +20,7 @@ var FormComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'form-selector',
+            styles: ["\n        input.ng-invalid{border:1px solid red}\n        input.ng-valid{border:1px solid green}\n    "],
             template: "\n    <form #formRef=\"ngForm\" (ngSubmit)=\"onSubmit(formRef.value)\">\n\n        <fieldset ngModelGroup=\"login\">\n            <h2>v5 - Form</h2>\n            <input \n                name=\"username_form\" \n                type=\"text\" \n                [(ngModel)]=\"username\" \n                #usernameRef=\"ngModel\" \n                required \n                minlength=\"3\"\n            >\n            <label *ngIf=\"usernameRef.errors?.required\" class=\"danger\">This field is required.</label>\n            <label *ngIf=\"usernameRef.errors?.minlength\" class=\"danger\">This field must be equal to or longer than {{usernameRef.errors?.minlength.requiredLength}} characters. You only typed {{usernameRef.errors?.minlength.actualLength}}.</label>\n            <br/>\n            <br/>{{usernameRef.valid}}\n            <br/>{{usernameRef.errors | json}}\n\n            <input \n                name=\"password\" \n                type=\"password\" \n                ngModel\n            >\n        </fieldset>\n\n        <button type=\"submit\">Submit</button>\n    </form>\n\n    <br/>{{formRef.value | json}}\n    <br/>{{formRef.valid}}\n    "
         }), 
         __metadata('design:paramtypes', [])
