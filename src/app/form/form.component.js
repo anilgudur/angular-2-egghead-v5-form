@@ -9,6 +9,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var Observable_1 = require('rxjs/Observable');
+require('rxjs/add/observable/combineLatest');
+require('rxjs/add/operator/filter');
 var FormComponent = (function () {
     function FormComponent() {
         this.username = "John";
@@ -17,10 +20,19 @@ var FormComponent = (function () {
         console.log(formValue);
     };
     FormComponent.prototype.ngAfterViewInit = function () {
-        this.userForm.valueChanges
-            .subscribe(function (v) { return console.table(v); });
-        this.userForm.statusChanges
-            .subscribe(function (v) { return console.log(v); });
+        // this.userForm.valueChanges
+        //                 .subscribe(v => console.table(v));
+        // this.userForm.statusChanges
+        //                 .subscribe(v => console.log(v));
+        Observable_1.Observable.combineLatest(this.userForm.statusChanges, this.userForm.valueChanges, function (status, value) { return ({ status: status, value: value }); })
+            .filter(function (_a) {
+            var status = _a.status;
+            return status === 'VALID';
+        })
+            .subscribe(function (_a) {
+            var value = _a.value;
+            return console.table(value);
+        });
     };
     __decorate([
         core_1.ViewChild('formRef'), 

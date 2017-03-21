@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/combineLatest';
+import 'rxjs/add/operator/filter';
 
 @Component({
     moduleId: module.id,
@@ -61,10 +63,18 @@ export class FormComponent {
     }
 
     ngAfterViewInit() {
-        this.userForm.valueChanges
-                        .subscribe(v => console.table(v));
+        // this.userForm.valueChanges
+        //                 .subscribe(v => console.table(v));
 
-        this.userForm.statusChanges
-                        .subscribe(v => console.log(v));
+        // this.userForm.statusChanges
+        //                 .subscribe(v => console.log(v));
+
+        Observable.combineLatest(
+            this.userForm.statusChanges,
+            this.userForm.valueChanges,
+            (status, value) => ({status, value})
+        )
+            .filter(({status}) => status === 'VALID')
+            .subscribe(({value}) => console.table(value))
     }
 }
