@@ -17,7 +17,7 @@ var FormComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'form',
-            template: "\n        <h2>v5 - Form</h2>\n        <input type=\"text\" [(ngModel)]=\"username\" required #usernameRef=\"ngModel\">\n        <br/>{{usernameRef.valid}}\n    "
+            template: "\n        <h2>v5 - Form</h2>\n        <input type=\"text\" [(ngModel)]=\"username\" required #usernameRef=\"ngModel\" minlength=\"3\">\n        <label *ngIf=\"usernameRef.errors?.required\" class=\"danger\">This field is required.</label>\n        <label *ngIf=\"usernameRef.errors?.minlength\" class=\"danger\">This field must be longer than {{usernameRef.errors?.minlength.requiredLength}} characters. You only typed {{usernameRef.errors?.minlength.actualLength}}.</label>\n\n        <br/>\n        <br/>{{usernameRef.valid}}\n        <br/>{{usernameRef.errors | json}}\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], FormComponent);
