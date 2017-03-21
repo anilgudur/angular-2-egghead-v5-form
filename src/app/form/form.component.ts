@@ -26,6 +26,14 @@ import { Component, ViewChild } from '@angular/core';
             <br/>{{usernameRef.valid}}
             <br/>{{usernameRef.errors | json}}
 
+            <hr/>
+            {{usernameRef.pristine}}
+            {{usernameRef.dirty}}
+            <hr/>
+            {{usernameRef.untouched}}
+            {{usernameRef.touched}}
+            <hr/>
+
             <input 
                 name="password" 
                 type="password" 
