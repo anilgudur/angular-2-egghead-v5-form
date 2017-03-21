@@ -15,6 +15,14 @@ import 'rxjs/add/operator/filter';
     template: `
     <form #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)">
 
+        <h2>Select box</h2>
+        <select name="selLocation" [ngModel]="locations[0]">
+            <option *ngFor="let location of locations" [value]="location">
+                {{location}}
+            </option>
+        </select>
+        <hr/>
+
         <h2>Radio</h2>
         <div *ngFor="let location of locations">
             <input 

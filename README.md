@@ -17,3 +17,5 @@ v5-form-step-07 "v5-07-egghead-angular-2-understand-the-angular-2-states-of-inpu
 v5-form-step-08 "v5-08-egghead-angular-2-use-rxjs-streams-with-angular-2-forms"
 
 v5-form-step-09 "v5-09-egghead-angular-2-create-radio-buttons-for-angular-2-forms"
+
+v5-form-step-10 "v5-10-egghead-angular-2-build-select-dropdowns-for-angular-2-forms"
