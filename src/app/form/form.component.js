@@ -13,11 +13,14 @@ var FormComponent = (function () {
     function FormComponent() {
         this.username = "John";
     }
+    FormComponent.prototype.onSubmit = function (formValue) {
+        console.log(formValue);
+    };
     FormComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'form',
-            template: "\n        <h2>v5 - Form</h2>\n        <input type=\"text\" [(ngModel)]=\"username\" required #usernameRef=\"ngModel\" minlength=\"3\">\n        <label *ngIf=\"usernameRef.errors?.required\" class=\"danger\">This field is required.</label>\n        <label *ngIf=\"usernameRef.errors?.minlength\" class=\"danger\">This field must be longer than {{usernameRef.errors?.minlength.requiredLength}} characters. You only typed {{usernameRef.errors?.minlength.actualLength}}.</label>\n\n        <br/>\n        <br/>{{usernameRef.valid}}\n        <br/>{{usernameRef.errors | json}}\n    "
+            selector: 'form-selector',
+            template: "\n    <form #formRef=\"ngForm\" (ngSubmit)=\"onSubmit(formRef.value)\">\n        <h2>v5 - Form</h2>\n        <input \n            name=\"username_form\" \n            type=\"text\" \n            [(ngModel)]=\"username\" \n            #usernameRef=\"ngModel\" \n            required \n            minlength=\"3\"\n        >\n        <label *ngIf=\"usernameRef.errors?.required\" class=\"danger\">This field is required.</label>\n        <label *ngIf=\"usernameRef.errors?.minlength\" class=\"danger\">This field must be equal to or longer than {{usernameRef.errors?.minlength.requiredLength}} characters. You only typed {{usernameRef.errors?.minlength.actualLength}}.</label>\n        <br/>\n        <br/>{{usernameRef.valid}}\n        <br/>{{usernameRef.errors | json}}\n\n        <button type=\"submit\">Submit</button>\n    </form>\n\n    <br/>{{formRef.value | json}}\n    <br/>{{formRef.valid}}\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], FormComponent);

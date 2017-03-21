@@ -13,7 +13,7 @@ import { LogDebugger, ConsoleService } from '../core/logs/logs.module';
             </li>
         </ul>
         <wikipedia></wikipedia>
-        <form></form>
+        <form-selector></form-selector>
     `,
     providers: [
         // {
