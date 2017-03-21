@@ -5,20 +5,29 @@ import { Component, ViewChild } from '@angular/core';
     selector: 'form-selector',
     template: `
     <form #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)">
-        <h2>v5 - Form</h2>
-        <input 
-            name="username_form" 
-            type="text" 
-            [(ngModel)]="username" 
-            #usernameRef="ngModel" 
-            required 
-            minlength="3"
-        >
-        <label *ngIf="usernameRef.errors?.required" class="danger">This field is required.</label>
-        <label *ngIf="usernameRef.errors?.minlength" class="danger">This field must be equal to or longer than {{usernameRef.errors?.minlength.requiredLength}} characters. You only typed {{usernameRef.errors?.minlength.actualLength}}.</label>
-        <br/>
-        <br/>{{usernameRef.valid}}
-        <br/>{{usernameRef.errors | json}}
+
+        <fieldset ngModelGroup="login">
+            <h2>v5 - Form</h2>
+            <input 
+                name="username_form" 
+                type="text" 
+                [(ngModel)]="username" 
+                #usernameRef="ngModel" 
+                required 
+                minlength="3"
+            >
+            <label *ngIf="usernameRef.errors?.required" class="danger">This field is required.</label>
+            <label *ngIf="usernameRef.errors?.minlength" class="danger">This field must be equal to or longer than {{usernameRef.errors?.minlength.requiredLength}} characters. You only typed {{usernameRef.errors?.minlength.actualLength}}.</label>
+            <br/>
+            <br/>{{usernameRef.valid}}
+            <br/>{{usernameRef.errors | json}}
+
+            <input 
+                name="password" 
+                type="password" 
+                ngModel
+            >
+        </fieldset>
 
         <button type="submit">Submit</button>
     </form>
