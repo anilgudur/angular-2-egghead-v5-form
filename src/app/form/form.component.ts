@@ -10,9 +10,27 @@ import 'rxjs/add/operator/filter';
     styles: [`
         input.ng-invalid{border:1px solid red}
         input.ng-valid{border:1px solid green}
+        input.ng-invalid + label:after{content:"<--Pick one"}
     `],
     template: `
     <form #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)">
+
+        <h2>Radio</h2>
+        <div *ngFor="let location of locations">
+            <input 
+                type="radio" 
+                name="location" 
+                [id]="location" 
+                ngModel 
+                [value]="location" 
+                required
+            >
+            <label [attr.for]="location">{{location}}</label>
+        </div>
+        <hr/>
+        {{formRef.value | json}}
+        <hr/>
+
 
         <fieldset ngModelGroup="login">
             <h2>v5 - Form</h2>
@@ -57,6 +75,8 @@ export class FormComponent {
     @ViewChild('formRef') userForm:any;
 
     username = "John";
+
+    locations = ["Home", "Away", "Space", "Oceans", "Stars"];
 
     onSubmit(formValue:any) {
         console.log(formValue);
