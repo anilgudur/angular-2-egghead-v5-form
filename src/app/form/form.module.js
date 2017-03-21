@@ -10,26 +10,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
-var list_component_1 = require('./list.component');
-var wikipedia_module_1 = require('../wikipedia/wikipedia.module');
-var form_module_1 = require('../form/form.module');
-var ListModule = (function () {
-    function ListModule() {
+var forms_1 = require('@angular/forms');
+var form_component_1 = require('./form.component');
+var FormModule = (function () {
+    function FormModule() {
     }
-    ListModule = __decorate([
+    FormModule = __decorate([
         core_1.NgModule({
-            imports: [
-                common_1.CommonModule,
-                wikipedia_module_1.WikipediaModule,
-                form_module_1.FormModule
-            ],
-            exports: [list_component_1.ListComponent, common_1.CommonModule],
-            declarations: [list_component_1.ListComponent],
-            providers: []
+            imports: [common_1.CommonModule, forms_1.FormsModule],
+            exports: [form_component_1.FormComponent, common_1.CommonModule],
+            declarations: [form_component_1.FormComponent],
+            providers: [],
         }), 
         __metadata('design:paramtypes', [])
-    ], ListModule);
-    return ListModule;
+    ], FormModule);
+    return FormModule;
 }());
-exports.ListModule = ListModule;
-//# sourceMappingURL=list.module.js.map
+exports.FormModule = FormModule;
+//# sourceMappingURL=form.module.js.map

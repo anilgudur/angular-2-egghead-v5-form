@@ -9,27 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var common_1 = require('@angular/common');
-var list_component_1 = require('./list.component');
-var wikipedia_module_1 = require('../wikipedia/wikipedia.module');
-var form_module_1 = require('../form/form.module');
-var ListModule = (function () {
-    function ListModule() {
+var FormComponent = (function () {
+    function FormComponent() {
+        this.username = "John";
     }
-    ListModule = __decorate([
-        core_1.NgModule({
-            imports: [
-                common_1.CommonModule,
-                wikipedia_module_1.WikipediaModule,
-                form_module_1.FormModule
-            ],
-            exports: [list_component_1.ListComponent, common_1.CommonModule],
-            declarations: [list_component_1.ListComponent],
-            providers: []
+    FormComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'form',
+            template: "\n        <h2>v5 - Form</h2>\n        <input type=\"text\" [(ngModel)]=\"username\">\n        <br/>{{username}}\n    "
         }), 
         __metadata('design:paramtypes', [])
-    ], ListModule);
-    return ListModule;
+    ], FormComponent);
+    return FormComponent;
 }());
-exports.ListModule = ListModule;
-//# sourceMappingURL=list.module.js.map
+exports.FormComponent = FormComponent;
+//# sourceMappingURL=form.component.js.map

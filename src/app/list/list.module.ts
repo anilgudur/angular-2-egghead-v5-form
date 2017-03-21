@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { ListComponent }   from './list.component';
 import { WikipediaModule } from '../wikipedia/wikipedia.module';
+import { FormModule } from '../form/form.module';
 
 @NgModule({
     imports: [
         CommonModule,
-        WikipediaModule
+        WikipediaModule,
+        FormModule
     ],
     exports: [ListComponent, CommonModule],
     declarations: [ListComponent],
