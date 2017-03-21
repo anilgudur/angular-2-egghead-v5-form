@@ -16,6 +16,16 @@ var FormComponent = (function () {
     FormComponent.prototype.onSubmit = function (formValue) {
         console.log(formValue);
     };
+    FormComponent.prototype.ngAfterViewInit = function () {
+        this.userForm.valueChanges
+            .subscribe(function (v) { return console.table(v); });
+        this.userForm.statusChanges
+            .subscribe(function (v) { return console.log(v); });
+    };
+    __decorate([
+        core_1.ViewChild('formRef'), 
+        __metadata('design:type', Object)
+    ], FormComponent.prototype, "userForm", void 0);
     FormComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

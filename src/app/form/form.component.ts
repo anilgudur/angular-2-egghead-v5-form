@@ -1,5 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 
+import { Observable } from 'rxjs/Observable';
+
 @Component({
     moduleId: module.id,
     selector: 'form-selector',
@@ -49,9 +51,20 @@ import { Component, ViewChild } from '@angular/core';
     `
 })
 export class FormComponent {
+
+    @ViewChild('formRef') userForm:any;
+
     username = "John";
 
     onSubmit(formValue:any) {
         console.log(formValue);
+    }
+
+    ngAfterViewInit() {
+        this.userForm.valueChanges
+                        .subscribe(v => console.table(v));
+
+        this.userForm.statusChanges
+                        .subscribe(v => console.log(v));
     }
 }
